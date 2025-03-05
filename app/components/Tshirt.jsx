@@ -8,6 +8,7 @@ import { useState } from "react";
 
 export default function Tshirt() {  
   const [texture, setTexture] = useState(null);
+  const [color, setColor] = useState("#ffffff"); // Default color
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
@@ -17,17 +18,21 @@ export default function Tshirt() {
       {/* Upload Design */}
       <FileUpload setTexture={setTexture} />
 
+      {/* Color Picker */}
+      <input 
+        type="color" 
+        value={color} 
+        onChange={(e) => setColor(e.target.value)} 
+        className="mt-4"
+      />
+
       {/* 3D T-Shirt Preview */}
       <div className="w-full h-[500px] bg-white shadow-lg rounded-xl mt-4">
         <Canvas camera={{ position: [0, 0, 3] }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[2, 2, 2]} />
-          <OrbitControls 
-            enableZoom={false}  
-            minPolarAngle={Math.PI / 2} 
-            maxPolarAngle={Math.PI / 2} 
-          />
-          <TShirtModel texture={texture} />
+          <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
+          <TShirtModel color={color} texture={texture} />
         </Canvas>
       </div>
     </div>

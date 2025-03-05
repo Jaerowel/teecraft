@@ -5,7 +5,7 @@ export default function FileUpload({ setTexture }) {
     const file = e.target.files[0];
     if (file) {
       const url = URL.createObjectURL(file);
-      setTexture(url); // ✅ Send texture URL to state
+      setTexture(url); // Send texture to TShirtModel
     }
   };
 
