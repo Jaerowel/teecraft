@@ -1,40 +1,37 @@
 "use client";
 
-import { useLoader } from "@react-three/fiber";
-import { useEffect, useState } from "react";
+import { useLoader, useThree } from "@react-three/fiber";
+import { useEffect, useMemo } from "react";
 import { TextureLoader, MeshStandardMaterial } from "three";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 
-export default function TShirtModel({ texture }) {
+export default function TShirtModel({ color, texture }) {
+  // Load the 3D T-Shirt model
   const tShirtModel = useLoader(OBJLoader, "/assets/oversized-tshirt.obj");
-  const [loadedTexture, setLoadedTexture] = useState(null);
 
-  // Load the texture dynamically when a new file is uploaded
-  useEffect(() => {
-    if (texture) {
-      const textureLoader = new TextureLoader();
-      textureLoader.load(texture, (loaded) => {
-        setLoadedTexture(loaded);
-      });
-    }
+  // ✅ Fix: Use useMemo to avoid breaking Hooks order
+  const baseTexture = useMemo(() => {
+    return texture ? new TextureLoader().load(texture) : null;
   }, [texture]);
 
-  // Apply texture to all materials in the T-shirt model
   useEffect(() => {
-    if (tShirtModel && loadedTexture) {
+    if (tShirtModel) {
       tShirtModel.traverse((child) => {
         if (child.isMesh) {
-          child.material = new MeshStandardMaterial({ map: loadedTexture });
+          child.material = new MeshStandardMaterial({
+            color: color || "#ffffff", // Base color
+            map: baseTexture || null,  // Apply uploaded texture if available
+          });
         }
       });
     }
-  }, [tShirtModel, loadedTexture]);
+  }, [tShirtModel, color, baseTexture]);
 
   return (
     <primitive 
       object={tShirtModel} 
-      position={[0, -5.5, 0]} // Adjust position to center
-      rotation={[0, Math.PI, 0]} // Face the camera
+      position={[0, -5.5, 0]} 
+      rotation={[0, Math.PI, 0]} 
       scale={4.5} 
     />
   );
