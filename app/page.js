@@ -1,5 +1,5 @@
 import React from 'react'
-import Tshirt from './components/Tshirt'
+import Tshirt from './Tshirt/Tshirt'
 
 function page() {
   return (
