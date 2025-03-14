@@ -24,7 +24,9 @@ export default function FileUpload({ setFullTexture, setDecalTexture }) {
         <button
           onClick={() => setMode("full")}
           className={`px-4 py-2 rounded ${
-            mode === "full" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"
+            mode === "full"
+              ? "bg-blue-600 text-white"
+              : "bg-gray-200 text-gray-700"
           }`}
         >
           Full Wrap
@@ -32,7 +34,9 @@ export default function FileUpload({ setFullTexture, setDecalTexture }) {
         <button
           onClick={() => setMode("decal")}
           className={`px-4 py-2 rounded ${
-            mode === "decal" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-700"
+            mode === "decal"
+              ? "bg-blue-600 text-white"
+              : "bg-gray-200 text-gray-700"
           }`}
         >
           Decal

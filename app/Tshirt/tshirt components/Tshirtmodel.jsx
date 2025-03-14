@@ -39,10 +39,10 @@ export default function TShirtModel({ color, fullTexture, decalTexture }) {
         // If a decal texture is provided, project it onto the mesh
         if (decalTex) {
           const decalGeometry = new DecalGeometry(
-            child,                    // Target mesh
+            child, // Target mesh
             new THREE.Vector3(0, 0, 0.5), // Position on the chest
-            new THREE.Euler(0, 0, 0),     // Orientation
-            new THREE.Vector3(1, 1, 1)    // Size of the decal
+            new THREE.Euler(0, 0, 0), // Orientation
+            new THREE.Vector3(1, 1, 1) // Size of the decal
           );
 
           const decalMaterial = new MeshStandardMaterial({
@@ -63,7 +63,7 @@ export default function TShirtModel({ color, fullTexture, decalTexture }) {
       <primitive
         object={tShirtModel}
         position={[0, -5.5, 0]}
-        rotation={[0, Math.PI/2.1, 0]}
+        rotation={[0, Math.PI / 2.1, 0]}
         scale={4.5}
       />
     </group>

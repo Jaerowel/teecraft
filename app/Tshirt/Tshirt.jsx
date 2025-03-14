@@ -13,7 +13,19 @@ const TShirtDesigner = () => {
   const [decalTexture, setDecalTexture] = useState(null);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+    <div className="flex flex-crow items-center justify-center  bg-gray-100 ">
+    {/* 3D T-Shirt Preview */}
+    <div className="w-full max-w-4xl h-[500px] bg-white shadow-lg rounded-xl mt-6">
+        <Canvas camera={{ position: [0, 0, 3] }}>
+          <Lighting />
+          <TShirtModel
+            color={color}
+            fullTexture={fullTexture}
+            decalTexture={decalTexture}
+          />
+        </Canvas>
+      </div>
+      <div className=" ml-15">
       <header className="text-center mb-6">
         <h1 className="text-4xl font-extrabold text-gray-800 mb-2">
           T-Shirt Designer
@@ -39,18 +51,9 @@ const TShirtDesigner = () => {
           className="w-10 h-10 p-0 border border-gray-300 rounded cursor-pointer"
         />
       </div>
-
-      {/* 3D T-Shirt Preview */}
-      <div className="w-full max-w-4xl h-[500px] bg-white shadow-lg rounded-xl mt-6">
-        <Canvas camera={{ position: [0, 0, 3] }}>
-          <Lighting />
-          <TShirtModel
-            color={color}
-            fullTexture={fullTexture}
-            decalTexture={decalTexture}
-          />
-        </Canvas>
       </div>
+
+      
     </div>
   );
 };

@@ -5,30 +5,17 @@ const Lighting = () => {
   return (
     <>
       {/* Hemisphere Light */}
-      <hemisphereLight
-        intensity={1}
-        skyColor="#ffffff"
-        groundColor="#444444"
-      />
+      <hemisphereLight intensity={1} skyColor="#ffffff" groundColor="#444444" />
 
       {/* Ambient Light */}
       <ambientLight intensity={0.5} />
 
       {/* Directional Lights */}
-      <directionalLight
-        position={[0, 0, 5]}
-        intensity={1.5}
-      />
-      <directionalLight
-        position={[0, 0, -5]}
-        intensity={0.8}
-      />
+      <directionalLight position={[0, 0, 5]} intensity={1.5} />
+      <directionalLight position={[0, 0, -5]} intensity={0.8} />
 
       {/* Point Light */}
-      <pointLight
-        position={[0, 1, 2]}
-        intensity={0.5}
-      />
+      <pointLight position={[0, 1, 2]} intensity={0.5} />
 
       {/* Orbit Controls */}
       <OrbitControls
