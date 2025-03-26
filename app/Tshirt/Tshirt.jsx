@@ -5,55 +5,61 @@ import { Canvas } from "@react-three/fiber";
 import FileUpload from "./tshirt components/Fileupload";
 import TShirtModel from "./tshirt components/Tshirtmodel";
 import Lighting from "./tshirt components/lighting";
+
 const TShirtDesigner = () => {
   const [color, setColor] = useState("#ffffff");
-
-  // NEW: Full and decal texture states
   const [fullTexture, setFullTexture] = useState(null);
   const [decalTexture, setDecalTexture] = useState(null);
 
   return (
-    <div className="flex flex-crow items-center justify-center  bg-gray-100 ">
-    {/* 3D T-Shirt Preview */}
-    <div className="w-full max-w-4xl h-[500px] bg-white shadow-lg rounded-xl mt-6">
-        <Canvas camera={{ position: [0, 0, 3] }}>
-          <Lighting />
-          <TShirtModel
-            color={color}
-            fullTexture={fullTexture}
-            decalTexture={decalTexture}
-          />
-        </Canvas>
-      </div>
-      <div className=" ml-15">
-      <header className="text-center mb-6">
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-2">
-          T-Shirt Designer
-        </h1>
-        <p className="text-gray-500">
-          Upload an image or pick a color to customize your T-shirt!
-        </p>
-      </header>
+    <div className="relative min-h-screen overflow-hidden bg-transparent">
+      {/* Content */}
+      <div className="relative z-10 flex flex-col md:flex-row min-h-screen w-full gap-8 p-8">
+        {/* 3D T-Shirt Preview */}
+        <div className="w-full md:w-2/3 h-[80vh] backdrop-blur-lg shadow-2xl rounded-xl border border-white/20 bg-transparent">
+          <Canvas camera={{ position: [0, 0, 3] }}>
+            <Lighting />
+            <TShirtModel
+              color={color}
+              fullTexture={fullTexture}
+              decalTexture={decalTexture}
+            />
+          </Canvas>
+        </div>
 
-      {/* File Upload */}
-      <FileUpload
-        setFullTexture={setFullTexture}
-        setDecalTexture={setDecalTexture}
-      />
+        {/* Controls Section */}
+        <div className="w-full md:w-1/3 space-y-8">
+          <header className="text-center md:text-left">
+            <h1 className="text-5xl font-extrabold text-white mb-4">
+              T-Shirt Designer
+            </h1>
+            <p className="text-xl text-white/80">
+              Upload an image or pick a color to customize your T-shirt!
+            </p>
+          </header>
 
-      {/* Color Picker */}
-      <div className="mt-4 flex items-center gap-2">
-        <label className="text-gray-700 font-medium">Pick Color:</label>
-        <input
-          type="color"
-          value={color}
-          onChange={(e) => setColor(e.target.value)}
-          className="w-10 h-10 p-0 border border-gray-300 rounded cursor-pointer"
-        />
-      </div>
-      </div>
+          {/* File Upload */}
+          <div className="bg-transparent backdrop-blur-lg p-6 rounded-xl shadow-lg border border-white/20">
+            <FileUpload
+              setFullTexture={setFullTexture}
+              setDecalTexture={setDecalTexture}
+            />
 
-      
+            {/* Color Picker */}
+            <div className="mt-6 flex items-center gap-4">
+              <label className="text-xl text-white font-medium">
+                Pick Color:
+              </label>
+              <input
+                type="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+                className="w-16 h-16 p-0 border-2 border-white/30 rounded-lg cursor-pointer bg-transparent"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

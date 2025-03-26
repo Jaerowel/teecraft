@@ -2,7 +2,7 @@ import React from 'react'
 
 function orderhistory() {
   return (
-    <div></div>
+    <div className='flex h-screen'>order-history</div>
   )
 }
 

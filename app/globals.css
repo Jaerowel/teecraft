@@ -7,7 +7,7 @@
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-foreground:;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -21,6 +21,93 @@
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: transparent;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+.stars {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: generate-stars(700); /* This is a placeholder - actual values below */
+  animation: animStar 50s linear infinite;
+}
+
+.stars2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: generate-stars(200);
+  animation: animStar 100s linear infinite;
+}
+
+.stars3 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: generate-stars(100);
+  animation: animStar 150s linear infinite;
+}
+
+.text-shadow-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+               0 0 20px rgba(255, 255, 255, 0.8),
+               0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+/* Replace generate-stars with this actual star field (just a sample - add more for denser field) */
+.stars {
+  box-shadow: 
+    1744px 122px #fff,
+    134px 1321px #fff,
+    92px 859px #fff,
+    235px 1045px #fff,
+    366px 912px #fff,
+    491px 942px #fff,
+    14px 1831px #fff,
+    582px 476px #fff,
+    588px 1230px #fff,
+    1520px 1343px #fff,
+    1799px 1231px #fff,
+    552px 1563px #fff,
+    1167px 1209px #fff,
+    1869px 1713px #fff,
+    1666px 1744px #fff,
+    1489px 1833px #fff,
+    1909px 1668px #fff,
+    1741px 1228px #fff,
+    1312px 1627px #fff,
+    670px 1601px #fff;
+}
+
+.stars2 {
+  box-shadow: 
+    1744px 122px #fff,
+    134px 1321px #fff,
+    92px 859px #fff,
+    235px 1045px #fff,
+    366px 912px #fff,
+    491px 942px #fff,
+    1520px 1343px #fff,
+    1799px 1231px #fff,
+    552px 1563px #fff,
+    1167px 1209px #fff;
+}
+
+.stars3 {
+  box-shadow: 
+    1744px 122px #fff,
+    134px 1321px #fff,
+    92px 859px #fff,
+    235px 1045px #fff,
+    366px 912px #fff;
 }

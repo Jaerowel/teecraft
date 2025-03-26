@@ -1,18 +1,5 @@
-// app/layout.js
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
 import LayoutWrapper from "./components/layoutWrapper";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "TeeCraft | Design Your Style",
@@ -21,10 +8,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className="scroll-smooth">
+      <body className="font-sans antialiased  text-black dark:bg-black dark:text-white">
         <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
